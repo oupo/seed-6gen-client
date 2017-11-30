@@ -3,7 +3,7 @@ require "net/http"
 require "open3"
 
 def main
-  pass = File.read("password").chomp
+  pass = (File.read("password").chomp rescue "")
 
   list = JSON.parse(Net::HTTP.get(URI.parse("https://seed-6gen.herokuapp.com/list")))
   puts "There are #{list.size} entries."
